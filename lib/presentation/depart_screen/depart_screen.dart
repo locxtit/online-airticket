@@ -1,0 +1,21 @@
+import '../depart_screen/widgets/citychipview11_item_widget.dart';import '../depart_screen/widgets/citychipview9_item_widget.dart';import 'package:flutter/material.dart';import 'package:loc_s_application_booking/core/app_export.dart';import 'package:loc_s_application_booking/widgets/custom_drop_down.dart';import 'package:loc_s_application_booking/widgets/custom_search_view.dart';
+// ignore_for_file: must_be_immutable
+class DepartScreen extends StatelessWidget {DepartScreen({Key? key}) : super(key: key);
+
+TextEditingController searchController = TextEditingController();
+
+List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
+
+List<String> dropdownItemList1 = ["Item One", "Item Two", "Item Three"];
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, body: SizedBox(width: double.maxFinite, child: Container(height: 770.v, width: double.maxFinite, decoration: AppDecoration.fillBlue, child: Stack(alignment: Alignment.center, children: [Align(alignment: Alignment.topLeft, child: Padding(padding: EdgeInsets.only(left: 10.h, top: 5.v), child: Row(children: [CustomImageView(imagePath: ImageConstant.imgArrowLeft, height: 24.adaptSize, width: 24.adaptSize, onTap: () {onTapImgArrowLeft(context);}), Padding(padding: EdgeInsets.only(left: 9.h, top: 3.v), child: Text("Đặt chuyến bay", style: CustomTextStyles.titleMediumOnPrimary))]))), Align(alignment: Alignment.center, child: Container(decoration: AppDecoration.dark, child: Column(mainAxisSize: MainAxisSize.min, children: [SizedBox(height: 20.v), Container(padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v), decoration: AppDecoration.outlineBlack.copyWith(borderRadius: BorderRadiusStyle.customBorderTL10), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [_buildHeaderPopup(context), SizedBox(height: 10.v), Padding(padding: EdgeInsets.symmetric(horizontal: 3.h), child: CustomSearchView(controller: searchController, hintText: "Quốc gia, thành phố hoặc sân bay")), SizedBox(height: 17.v), Padding(padding: EdgeInsets.only(left: 3.h), child: Text("Điểm đến Nội Địa phổ biến", style: CustomTextStyles.labelLargeBlack900_1)), SizedBox(height: 12.v), _buildCityChipView1(context), SizedBox(height: 15.v), Padding(padding: EdgeInsets.symmetric(horizontal: 3.h), child: CustomDropDown(icon: Container(margin: EdgeInsets.only(left: 30.h), child: CustomImageView(imagePath: ImageConstant.imgArrowdownGray400, height: 24.adaptSize, width: 24.adaptSize)), hintText: "Nội Địa", items: dropdownItemList, onChanged: (value) {})), SizedBox(height: 17.v), Padding(padding: EdgeInsets.only(left: 3.h), child: Text("Điểm đến Quốc Tế phổ biến", style: CustomTextStyles.labelLargeBlack900_1)), SizedBox(height: 12.v), _buildCityChipView2(context), SizedBox(height: 15.v), Padding(padding: EdgeInsets.symmetric(horizontal: 3.h), child: CustomDropDown(icon: Container(margin: EdgeInsets.only(left: 30.h), child: CustomImageView(imagePath: ImageConstant.imgArrowdownGray400, height: 24.adaptSize, width: 24.adaptSize)), hintText: "Quốc Tế", items: dropdownItemList1, onChanged: (value) {})), SizedBox(height: 15.v)]))])))]))))); } 
+/// Section Widget
+Widget _buildHeaderPopup(BuildContext context) { return Container(height: 28.v, width: 335.h, margin: EdgeInsets.only(left: 2.h), child: Stack(alignment: Alignment.centerLeft, children: [Align(alignment: Alignment.center, child: Container(padding: EdgeInsets.symmetric(vertical: 2.v), decoration: AppDecoration.light, child: CustomImageView(imagePath: ImageConstant.imgUTimes, height: 24.adaptSize, width: 24.adaptSize))), Align(alignment: Alignment.centerLeft, child: Text("Điểm khởi hành", style: CustomTextStyles.titleMedium18))])); } 
+/// Section Widget
+Widget _buildCityChipView1(BuildContext context) { return Wrap(runSpacing: 8.v, spacing: 8.h, children: List<Widget>.generate(3, (index) => Citychipview9ItemWidget())); } 
+/// Section Widget
+Widget _buildCityChipView2(BuildContext context) { return Wrap(runSpacing: 8.v, spacing: 8.h, children: List<Widget>.generate(3, (index) => Citychipview11ItemWidget())); } 
+
+/// Navigates back to the previous screen.
+onTapImgArrowLeft(BuildContext context) { Navigator.pop(context); } 
+ }
